@@ -148,8 +148,26 @@ $(channel).bind("nodechat-msg", function(event, message) {
 
 // handle login (choosing a nick)
 $(function() {
+	function loginError(error) {
+		login
+			.unbind("ajaxSuccess.login")
+			.addClass("error")
+			.find("label")
+				.text(error + " Please choose another:")
+			.end()
+			.find("input")
+				.focus();
+	}
+	
 	var login = $("#login");
 	login.submit(function() {
+		var nick = $.trim($("#nick").val());
+		
+		if (!nick.length || /[^\w_\-^!]/.exec(nick)) {
+			loginError("Invalid Nickname.");
+			return false;
+		}
+		
 		$(this).one("ajaxSuccess.login", function() {
 			login.unbind("ajaxError.login");
 			$("body")
@@ -157,17 +175,10 @@ $(function() {
 				.addClass("channel");
 			message.focus();
 		}).one("ajaxError.login", function() {
-			login
-				.unbind("ajaxSuccess.login")
-				.addClass("error")
-				.find("label")
-					.text("Nickname in use. Please choose another:")
-				.end()
-				.find("input")
-					.focus();
+			loginError("Nickname in use.");
 		});
 		
-		channel.join($("#nick").val());
+		channel.join(nick);
 		
 		return false;
 	});

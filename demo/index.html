@@ -1,25 +1,24 @@
 <!DOCTYPE html>
 <html>
 <head>
-	<meta charset="utf-8">
-	<title>NodeChat v0.1</title>
-	
-	<link rel="stylesheet" type="text/css" href="css/layout.css">
-	<script src="jquery-1.4.2.js"></script>
-	<script src="nodechat.js"></script>
-	<script src="client.js"></script>
+  <meta charset="utf-8">
+  <title>NodeChat v0.1</title>
+  
+  <link rel="stylesheet" type="text/css" href="css/layout.css">
+  <script src="jquery-1.4.2.js"></script>
+  <script src="nodechat.js"></script>
+  <script src="client.js"></script>
 </head>
 <body class="login">
-
   <header><img src="images/node-chat.png" width="92" height="10" alt="Node Chat v0.1" /></header>
   
   <form id="login">
-  	<h1>Welcome to Node-<strong>Chat</strong></h1>
-  	<p>
-  	  <label for="nick">Please choose a nickname:</label>
-  	  <input type="text" id="nick" autocomplete="off" />
-  	</p>
-  </form><!-- #login -->
+    <h1>Welcome to Node-<strong>Chat</strong></h1>
+    <p>
+      <label for="nick">Please choose a nickname:</label>
+      <input type="text" id="nick" maxlength="50" autocomplete="off" />
+    </p>
+  </form>
   
   <section id="channel">
     
@@ -40,7 +39,7 @@
     
     <footer>
       <p class="credits">
-        Node.js + jQuery Chat Demo by <a href="#">Scott Gonz&aacute;lez</a> <span class="pipe">|</span>
+        Node.js + jQuery Chat Demo by <a href="http://nemikor.com">Scott González</a> <span class="pipe">|</span>
         User Interface by <a href="http://dougneiner.com">Doug Neiner</a>
       </p>
     </footer>
