@@ -1,10 +1,5 @@
 (function($) {
 
-// window.setTimeout(function(){
-//   $("#nick").val("Doug Neiner");
-//   $("#login").submit();
-// }, 1000);
-
 var colors  = ["green","orange","yellow","red","fuschia","blue"],
     channel = nodeChat.connect("/chat"),
     scroll  = true,

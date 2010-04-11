@@ -9,89 +9,34 @@ html, body {
   height: 100%;
 }
 
-#users li {
-  text-decoration: none;
-  color: #ccc;
-  text-shadow: rgba(0,0,0,1) 0 -1px 0, rgba(0,0,0,0.4) 0 0 1px;
-  font-family: helvetica, arial, sans-serif;
-  font-size: 14px;
-  width: 155px;
-  height: 35px;
-  display: block;
-  text-align: center;
-  text-indent: -1px;
-  line-height: 30px;
-  background: url(../images/button.png) no-repeat;
-  position: relative;
-  margin: 0 0 5px 0;
-  cursor: pointer;
+/* Fonts */
+
+/* Normal type */
+body, #users li, #entry input[type=text], a#submit, #chat-log {
+  font-family: Helvetica, Arial, sans-serif;
 }
 
-#users li:hover {
-  color: #fff;
-  background-position: 0 -36px;
+/* Specia Type */
+footer p.credits, #login h1 {
+    font-family: "Gill Sans", "Gill Sans MT", Helvetica, Arial, sans-serif;
 }
 
-
-#users li:active {
-  color: #fff;
-  line-height: 33px;
-  text-indent: -1px;
-  background-position: 0 -72px;
-}
-
-#users li:active:after {
-  top: 26px;
-}
-
-#users li:after {
-  content: "";
-  display: block;
-  width: 57px;
-  height: 12px;
-  position: absolute;
-  left: 50%;
-  margin-left: -29px;
-  top: 25px;
-  background: url(../images/glows.png) no-repeat;
-}
-
-#users li.green:after   { background-position: 0 0;}
-#users li.orange:after  { background-position: -57px 0;}
-#users li.yellow:after  { background-position: -114px 0;}
-#users li.red:after     { background-position: -171px 0;}
-#users li.fuschia:after { background-position: -228px 0;}
-#users li.blue:after    { background-position: -285px 0;}
-
-#users {
-  position: fixed;
-  width: 155px;
-  top: 45px;
-  right: 25px;
-}
-
-#frame {
-  display: block;
-  position: fixed;
-  left: 20px;
-  right: 200px;
-  top: 45px;
-  bottom: 110px;
-  border-width: 5px 7px 7px 5px;
-  -webkit-border-image: url(../images/inset-border.png) 5 7 7 5 stretch stretch;
-  -moz-border-image: url(../images/inset-border.png) 5 7 7 5 stretch stretch;
-}
+/** HEADER */
 
 body > header {
-  height: 23px;
   background: #000 url(../images/header-bg.png) repeat-x;
+  
   -webkit-box-shadow: rgba(255,255,255,0.1) 0 1px 0;
   -moz-box-shadow: rgba(255,255,255,0.1) 0 1px 0;
   box-shadow: rgba(255,255,255,0.1) 0 1px 0;
   position: fixed;
-  left: 0;
-  right: 0;
+  
   top: 0;
+  right: 0;
+  left: 0;
+  
+  height: 23px;
+  
   display: block;
 }
 
@@ -101,135 +46,23 @@ body > header img {
   left: 6px;
 }
 
-footer {
-  height: 26px;
-  position: fixed;
-  left: 0;
-  right: 0;
-  bottom: 0;
-  background: url(../images/footer.png) repeat-x;
-}
 
-footer p.credits {
-  font-family: "Gill Sans", "Gill Sans MT", Helvetica, Arial, sans-serif;
-  text-transform: uppercase;
-  height: 26px;
-  line-height: 26px;
-  padding: 0 15px;
-  font-size: 10px;
-  text-align: right;
-  color: #7b7b7b;
-  text-shadow: #000 0 1px 0, #000 0 0 1px;
-}
 
-footer p.credits a {
-  color: #aaa;
-  text-decoration: none;
-}
-
-footer p.credits a:hover {
-  color: #ccc;
-}
-
-span.pipe {
-  margin: 0 3px;
-}
-
-#entry {
-  border-top: solid 1px #c2c2c2;
-  border-bottom: solid 1px #646464;
-  -webkit-box-shadow: #000 0 -1px 0;
-  -moz-box-shadow: #000 0 -1px 0;
-  box-shadow: #000 0 -1px 0;
-  height: 60px;
-  position: fixed;
-  left: 0;
-  right: 0;
-  bottom: 26px;
-  background: #a7a7a7 url(../images/metal.jpg) center -3px repeat-x;
-}
-
-#entry p {
-  position: fixed;
-  height: 20px;
-  left: 27px;
-  right: 270px;
-
-  width: auto;
-  bottom: 46px;
-  
-}
-
-#entry input[type=text]{
-  background: transparent;
-  padding: 0;
-  outline: none;
-  border: none;
+/** CHAT LOG */
+#frame {
   display: block;
-  color: #fff;
-  width: 100%;
-  height: 100%;
-  text-shadow: #000 0 1px 0;
-  font-size: 11pt;
-  font-family: helvetica, arial, sans-serif;
-}
+  position: fixed;
 
-#entry input[type=submit]{
-  display: none;
-}
-
-#entry a#submit {
-  position: absolute;
-  background: url(../images/send.png) no-repeat;
-  right: -6px;
-  top: -4px;
-  font-family: helvetica, arial, sans-serif;
-  text-align: center;
-  width: 68px;
-  height: 27px;
-  line-height: 25px;
-  border: none;
-  padding: 0;
-  outline: none;
-  font-size: 14px;
-  text-indent: -1px;
-  color: #111;
-  text-shadow: rgba(255,255,255,0.3) 0 1px 0;
-  text-decoration: none;
-}
-
-#entry a#submit:hover {
-  background-position: 0 -27px;
-  text-shadow: rgba(255,255,255,0.3) 0 1px 0, rgba(255,255,255,0.8) 0 0 6px;
-}
-
-#entry a#submit:active {
-  background-position: 0 -54px;
-  line-height: 27px;
-  text-indent: 1px;
-}
-
-#entry input[type=submit]{
-}
-
-#entry fieldset {
-  position: absolute;
-  left: 20px;
-  top: 14px;
-  height: 17px;
+  top: 45px;
   right: 200px;
-  border-width: 7px 8px 8px 8px;
-  -webkit-border-image: url(../images/inset-border-l.png) 7 8 8 8 repeat repeat;
-  -moz-border-image: url(../images/inset-border-l.png) 7 8 8 8 repeat repeat;
-  -webkit-border-radius: 6px;
-  -moz-border-radius: 4px;
-  border-radius: 4px;
-}
+  bottom: 110px;
+  left: 20px;
 
-#entry fieldset.focus {
-/*  -webkit-box-shadow: rgba(255,255,255,1) 0 0 7px;*/
+  border-width: 5px 7px 7px 5px;
+  -webkit-border-image: url(../images/inset-border.png) 5 7 7 5 stretch stretch;
+  -moz-border-image: url(../images/inset-border.png) 5 7 7 5 stretch stretch;
+  border-image: url(../images/inset-border.png) 5 7 7 5 stretch stretch;
 }
-
 
 #chat-log {
   position: absolute;
@@ -238,7 +71,6 @@ span.pipe {
   width: 99%;
   overflow: auto;
   max-height: 99%;
-  font-family: helvetica, arial, sans-serif;
   color: #ccc;
 }
 
@@ -306,7 +138,195 @@ span.pipe {
 }
 
 
+/** USER LIST */
 
+#users {
+  position: fixed;
+  width: 155px;
+  top: 45px;
+  right: 25px;
+}
+
+#users li {
+  color: #ccc;
+  background: url(../images/button.png) no-repeat;
+
+  font-size: 14px;
+  text-align: center;
+  text-indent: -1px;
+  text-shadow: rgba(0,0,0,1) 0 -1px 0, rgba(0,0,0,0.4) 0 0 1px;
+  line-height: 30px;
+  
+  margin: 0 0 5px 0;
+  width: 155px;
+  height: 35px;
+  
+  position: relative;
+  cursor: pointer;
+}
+
+#users li:hover {
+  color: #fff;
+  background-position: 0 -36px;
+}
+
+
+#users li:active {
+  color: #fff;
+  line-height: 33px;
+  text-indent: -1px;
+  background-position: 0 -72px;
+}
+
+/* Adds the glow */
+#users li:after {
+  content: "";
+  display: block;
+  width: 57px;
+  height: 12px;
+  position: absolute;
+  left: 50%;
+  margin-left: -29px;
+  top: 25px;
+  background: url(../images/glows.png) no-repeat;
+}
+
+#users li:active:after {
+  top: 26px;
+}
+
+#users li.green:after   { background-position: 0 0;}
+#users li.orange:after  { background-position: -57px 0;}
+#users li.yellow:after  { background-position: -114px 0;}
+#users li.red:after     { background-position: -171px 0;}
+#users li.fuschia:after { background-position: -228px 0;}
+#users li.blue:after    { background-position: -285px 0;}
+
+/** ENTRY FORM */
+
+#entry {
+  border-top: solid 1px #c2c2c2;
+  border-bottom: solid 1px #646464;
+  -webkit-box-shadow: #000 0 -1px 0;
+  -moz-box-shadow: #000 0 -1px 0;
+  box-shadow: #000 0 -1px 0;
+  height: 60px;
+  position: fixed;
+  left: 0;
+  right: 0;
+  bottom: 26px;
+  background: #a7a7a7 url(../images/metal.jpg) center -3px repeat-x;
+}
+
+#entry p {
+  position: fixed;
+  height: 20px;
+  left: 27px;
+  right: 270px;
+
+  width: auto;
+  bottom: 46px;
+  
+}
+
+#entry input[type=text]{
+  background: transparent;
+  padding: 0;
+  outline: none;
+  border: none;
+  display: block;
+  color: #fff;
+  width: 100%;
+  height: 100%;
+  text-shadow: #000 0 1px 0;
+  font-size: 11pt;
+}
+
+#entry input[type=submit]{
+  display: none;
+}
+
+#entry a#submit {
+  position: absolute;
+  background: url(../images/send.png) no-repeat;
+  right: -6px;
+  top: -4px;
+  text-align: center;
+  width: 68px;
+  height: 27px;
+  line-height: 25px;
+  border: none;
+  padding: 0;
+  outline: none;
+  font-size: 14px;
+  text-indent: -1px;
+  color: #111;
+  text-shadow: rgba(255,255,255,0.3) 0 1px 0;
+  text-decoration: none;
+}
+
+#entry a#submit:hover {
+  background-position: 0 -27px;
+  text-shadow: rgba(255,255,255,0.3) 0 1px 0, rgba(255,255,255,0.8) 0 0 6px;
+}
+
+#entry a#submit:active {
+  background-position: 0 -54px;
+  line-height: 27px;
+  text-indent: 1px;
+}
+
+#entry fieldset {
+  position: absolute;
+  left: 20px;
+  top: 14px;
+  height: 17px;
+  right: 200px;
+  border-width: 7px 8px 8px 8px;
+  -webkit-border-image: url(../images/inset-border-l.png) 7 8 8 8 repeat repeat;
+  -moz-border-image: url(../images/inset-border-l.png) 7 8 8 8 repeat repeat;
+  -webkit-border-radius: 6px;
+  -moz-border-radius: 4px;
+  border-radius: 4px;
+}
+
+/** FOOTER */
+
+footer {
+  height: 26px;
+  position: fixed;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: url(../images/footer.png) repeat-x;
+}
+
+footer p.credits {
+  text-transform: uppercase;
+  height: 26px;
+  line-height: 26px;
+  padding: 0 15px;
+  font-size: 10px;
+  text-align: right;
+  color: #7b7b7b;
+  text-shadow: #000 0 1px 0, #000 0 0 1px;
+}
+
+footer p.credits a {
+  color: #aaa;
+  text-decoration: none;
+}
+
+footer p.credits a:hover {
+  color: #ccc;
+}
+
+span.pipe {
+  margin: 0 3px;
+}
+
+
+/** LOGIN FORM */
 
 #login {
   position: fixed;
@@ -323,7 +343,6 @@ span.pipe {
 }
 
 #login h1 {
-  font-family: "Gill Sans", "Gill Sans MT", Helvetica, Arial, sans-serif;
   text-transform: uppercase;
   color: #333;
   text-align: center;
@@ -364,7 +383,6 @@ span.pipe {
 }
 
 #login p label {
-    font-family: helvetica, arial, sans-serif;
     color: #ddd;
     font-size: 12px;
     font-style: italic;
