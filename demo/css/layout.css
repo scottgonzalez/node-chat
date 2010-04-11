@@ -1,0 +1,401 @@
+@import "reset.css";
+
+html {
+  background: #3c3c3c url(../images/background.png);
+}
+
+html, body {
+  width: 100%;
+  height: 100%;
+}
+
+#users li {
+  text-decoration: none;
+  color: #ccc;
+  text-shadow: rgba(0,0,0,1) 0 -1px 0, rgba(0,0,0,0.4) 0 0 1px;
+  font-family: helvetica, arial, sans-serif;
+  font-size: 14px;
+  width: 155px;
+  height: 35px;
+  display: block;
+  text-align: center;
+  text-indent: -1px;
+  line-height: 30px;
+  background: url(../images/button.png) no-repeat;
+  position: relative;
+  margin: 0 0 5px 0;
+  cursor: pointer;
+}
+
+#users li:hover {
+  color: #fff;
+  background-position: 0 -36px;
+}
+
+
+#users li:active {
+  color: #fff;
+  line-height: 33px;
+  text-indent: -1px;
+  background-position: 0 -72px;
+}
+
+#users li:active:after {
+  top: 26px;
+}
+
+#users li:after {
+  content: "";
+  display: block;
+  width: 57px;
+  height: 12px;
+  position: absolute;
+  left: 50%;
+  margin-left: -29px;
+  top: 25px;
+  background: url(../images/glows.png) no-repeat;
+}
+
+#users li.green:after   { background-position: 0 0;}
+#users li.orange:after  { background-position: -57px 0;}
+#users li.yellow:after  { background-position: -114px 0;}
+#users li.red:after     { background-position: -171px 0;}
+#users li.fuschia:after { background-position: -228px 0;}
+#users li.blue:after    { background-position: -285px 0;}
+
+#users {
+  position: fixed;
+  width: 155px;
+  top: 45px;
+  right: 25px;
+}
+
+#frame {
+  display: block;
+  position: fixed;
+  left: 20px;
+  right: 200px;
+  top: 45px;
+  bottom: 110px;
+  border-width: 5px 7px 7px 5px;
+  -webkit-border-image: url(../images/inset-border.png) 5 7 7 5 stretch stretch;
+  -moz-border-image: url(../images/inset-border.png) 5 7 7 5 stretch stretch;
+}
+
+body > header {
+  height: 23px;
+  background: #000 url(../images/header-bg.png) repeat-x;
+  -webkit-box-shadow: rgba(255,255,255,0.1) 0 1px 0;
+  -moz-box-shadow: rgba(255,255,255,0.1) 0 1px 0;
+  box-shadow: rgba(255,255,255,0.1) 0 1px 0;
+  position: fixed;
+  left: 0;
+  right: 0;
+  top: 0;
+  display: block;
+}
+
+body > header img {
+  position: relative;
+  top: 3px;
+  left: 6px;
+}
+
+footer {
+  height: 26px;
+  position: fixed;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: url(../images/footer.png) repeat-x;
+}
+
+footer p.credits {
+  font-family: "Gill Sans", "Gill Sans MT", Helvetica, Arial, sans-serif;
+  text-transform: uppercase;
+  height: 26px;
+  line-height: 26px;
+  padding: 0 15px;
+  font-size: 10px;
+  text-align: right;
+  color: #7b7b7b;
+  text-shadow: #000 0 1px 0, #000 0 0 1px;
+}
+
+footer p.credits a {
+  color: #aaa;
+  text-decoration: none;
+}
+
+footer p.credits a:hover {
+  color: #ccc;
+}
+
+span.pipe {
+  margin: 0 3px;
+}
+
+#entry {
+  border-top: solid 1px #c2c2c2;
+  border-bottom: solid 1px #646464;
+  -webkit-box-shadow: #000 0 -1px 0;
+  -moz-box-shadow: #000 0 -1px 0;
+  box-shadow: #000 0 -1px 0;
+  height: 60px;
+  position: fixed;
+  left: 0;
+  right: 0;
+  bottom: 26px;
+  background: #a7a7a7 url(../images/metal.jpg) center -3px repeat-x;
+}
+
+#entry p {
+  position: fixed;
+  height: 20px;
+  left: 27px;
+  right: 270px;
+
+  width: auto;
+  bottom: 46px;
+  
+}
+
+#entry input[type=text]{
+  background: transparent;
+  padding: 0;
+  outline: none;
+  border: none;
+  display: block;
+  color: #fff;
+  width: 100%;
+  height: 100%;
+  text-shadow: #000 0 1px 0;
+  font-size: 11pt;
+  font-family: helvetica, arial, sans-serif;
+}
+
+#entry input[type=submit]{
+  display: none;
+}
+
+#entry a#submit {
+  position: absolute;
+  background: url(../images/send.png) no-repeat;
+  right: -6px;
+  top: -4px;
+  font-family: helvetica, arial, sans-serif;
+  text-align: center;
+  width: 68px;
+  height: 27px;
+  line-height: 25px;
+  border: none;
+  padding: 0;
+  outline: none;
+  font-size: 14px;
+  text-indent: -1px;
+  color: #111;
+  text-shadow: rgba(255,255,255,0.3) 0 1px 0;
+  text-decoration: none;
+}
+
+#entry a#submit:hover {
+  background-position: 0 -27px;
+  text-shadow: rgba(255,255,255,0.3) 0 1px 0, rgba(255,255,255,0.8) 0 0 6px;
+}
+
+#entry a#submit:active {
+  background-position: 0 -54px;
+  line-height: 27px;
+  text-indent: 1px;
+}
+
+#entry input[type=submit]{
+}
+
+#entry fieldset {
+  position: absolute;
+  left: 20px;
+  top: 14px;
+  height: 17px;
+  right: 200px;
+  border-width: 7px 8px 8px 8px;
+  -webkit-border-image: url(../images/inset-border-l.png) 7 8 8 8 repeat repeat;
+  -moz-border-image: url(../images/inset-border-l.png) 7 8 8 8 repeat repeat;
+  -webkit-border-radius: 6px;
+  -moz-border-radius: 4px;
+  border-radius: 4px;
+}
+
+#entry fieldset.focus {
+/*  -webkit-box-shadow: rgba(255,255,255,1) 0 0 7px;*/
+}
+
+
+#chat-log {
+  position: absolute;
+  left: 0.5%;
+  bottom: 0.5%;
+  width: 99%;
+  overflow: auto;
+  max-height: 99%;
+  font-family: helvetica, arial, sans-serif;
+  color: #ccc;
+}
+
+#chat-log div.chat-msg {
+  margin-right: 10px;
+  padding: 6px 70px 6px 30px;
+  font-size: 10pt;
+  border-bottom: solid 1px #111;
+  -webkit-box-shadow: #444 0 1px 0;
+  -moz-box-shadow: #444 0 1px 0;
+  box-shadow: #444 0 1px 0;
+  margin-bottom: 1px;
+  border-width: 0 0 1px 0;
+  position: relative;
+  line-height: 140%;
+  text-indent: -20px;
+}
+
+#chat-log div.chat-system-msg {
+  text-align: center;
+  font-style: italic;
+  color: #888;
+  text-shadow: #000 0 -1px 0;
+}
+
+
+
+.chat-time {
+  position: absolute;
+  font-size: 10px;
+  height: 10pt;
+  line-height: 12px;
+  display: block;
+  float: left;
+  right: 6px;
+  top: 7px;
+  color: #111;
+  font-weight: bold;
+  font-style: normal;
+  text-shadow: #4a4a4a 0 1px 0;
+}
+
+#chat-log div.chat-msg .chat-nick {
+  color: #fff;
+  margin-right: 10px;
+}
+
+#chat-log div.chat-msg .chat-nick:after {
+  content: ":";
+}
+
+#chat-log div.chat-system-msg .chat-nick {
+  margin-right: 4px;
+  color: #888;
+  font-weight: bold;
+}
+
+#chat-log div.chat-system-msg .chat-nick:after {
+  content: "";
+}
+
+
+#chat-log div.chat-msg:nth-child(2n){
+  background: rgba(0,0,0,0.05);
+}
+
+
+
+
+#login {
+  position: fixed;
+  height: 70px;
+  left: 0;
+  right: 0;
+  margin-top: -75px;
+  top: 50%;
+  z-index: 200;
+  background: #a7a7a7 url(../images/metal.jpg) 0 -3px repeat-x;
+  border-top: solid 1px #bbb;
+  border-bottom: solid 1px #666;
+  -webkit-box-shadow: rgba(0,0,0,0.4) 0 2px 4px;
+}
+
+#login h1 {
+  font-family: "Gill Sans", "Gill Sans MT", Helvetica, Arial, sans-serif;
+  text-transform: uppercase;
+  color: #333;
+  text-align: center;
+  padding: 4px 0 0 0;
+  font-size: 16px;
+  letter-spacing: 1px;
+  text-shadow: rgba(255,255,255,0.3) 0 1px 0;
+}
+
+#login p {
+  position: absolute;
+  content: "";
+  display: block;
+  height: 35px;
+  line-height: 35px;
+  left: 0;
+  right: 0;
+  bottom: 10px;
+  text-align: center;
+  background: url(../images/footer.png) repeat-x;
+}
+
+#login input {
+  width: 150px;
+  margin-left: 5px;
+  background: #fff;
+  border: none;
+  padding: 3px;
+  -webkit-border-radius: 3px;
+  -moz-border-radius: 3px;
+  border-radius: 3px;
+}
+
+#login.error {
+  -webkit-box-shadow: red 0 0 100px;
+  -moz-box-shadow: red 0 0 50px;
+  box-shadow: red 0 0 100px;
+}
+
+#login p label {
+    font-family: helvetica, arial, sans-serif;
+    color: #ddd;
+    font-size: 12px;
+    font-style: italic;
+    text-shadow: #000 0 1px 0;
+}
+
+body.login header:after {
+  content: "";
+  display: block;
+  position: fixed;
+  top: 0;
+  left: 0;
+  bottom: 0;
+  right: 0;
+  background: url(../images/background.png);
+  opacity: 0.8;
+  z-index: 100;
+}
+
+body.login header:before {
+  content: "";
+  display: block;
+  position: fixed;
+  top: 0;
+  left: 0;
+  bottom: 0;
+  right: 0;
+  background: rgba(0,0,0,0.5);
+  opacity: 0.8;
+  z-index: 101;
+}
+
+body #login { display: none;}
+body.login #login { display: block;}

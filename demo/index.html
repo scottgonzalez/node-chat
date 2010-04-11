@@ -1,30 +1,50 @@
-<!doctype html>
+<!DOCTYPE html>
 <html>
 <head>
 	<meta charset="utf-8">
-	<title>node chat</title>
+	<title>NodeChat v0.1</title>
 	
-	<link rel="stylesheet" type="text/css" href="style.css">
+	<link rel="stylesheet" type="text/css" href="css/layout.css">
 	<script src="jquery-1.4.2.js"></script>
 	<script src="nodechat.js"></script>
 	<script src="client.js"></script>
 </head>
 <body class="login">
 
-<div id="wrapper">
-	<form id="login">
-		<p>Welcome to node-chat.</p>
-		<p>Please choose a nick.</p>
-		<input id="nick">
-	</form><!-- #login -->
-	<div id="channel">
-		<ul id="users"></ul>
-		<div id="chat-log"></div>
-		<form>
-			<input id="message">
-		</form>
-	</div><!-- #channel -->
-</div><!-- #wrapper -->
-
+  <header><img src="images/node-chat.png" width="92" height="10" alt="Node Chat v0.1" /></header>
+  
+  <form id="login">
+  	<h1>Welcome to Node-<strong>Chat</strong></h1>
+  	<p>
+  	  <label for="nick">Please choose a nickname:</label>
+  	  <input type="text" id="nick" autocomplete="off" />
+  	</p>
+  </form><!-- #login -->
+  
+  <section id="channel">
+    
+    <section id="frame">
+      <div id="chat-log">
+      </div>
+    </section>
+    
+    <ul id="users" class="button_list">
+    </ul>
+    
+    <form id="entry">
+      <fieldset>
+        <p><input type="text" name="message" value="" autocomplete="off" id="message" /></p>
+        <input type="submit" value="Send" id="Send" />
+      </fieldset>
+    </form>
+    
+    <footer>
+      <p class="credits">
+        Node.js + jQuery Chat Demo by <a href="#">Scott Gonz&aacute;lez</a> <span class="pipe">|</span>
+        User Interface by <a href="http://dougneiner.com">Doug Neiner</a>
+      </p>
+    </footer>
+    
+  </section>
 </body>
 </html>

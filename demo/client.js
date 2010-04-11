@@ -1,6 +1,33 @@
 (function($) {
 
-var channel = nodeChat.connect("/chat");
+// window.setTimeout(function(){
+//   $("#nick").val("Doug Neiner");
+//   $("#login").submit();
+// }, 1000);
+
+var colors  = ["green","orange","yellow","red","fuschia","blue"],
+    channel = nodeChat.connect("/chat"),
+    scroll  = true,
+    log,
+    message ;
+    
+// TODO: Turn off auto scrolling if user has scrolled up from the bottom
+
+$(function(){
+  log = $("#chat-log");
+  message = $("#message");
+  
+  // Add a button that can be easily styled
+  $("<a />", {id:"submit", text: "Send", href: "#", click: function(e){
+    e.preventDefault();
+    $(this).closest('form').submit();
+  }}).appendTo("#entry fieldset");
+  
+  // Add a message indicator when a nickname is clicked
+  $("#users").delegate("li", "click", function(){
+    message.val( $(this).text() + ": " + message.val()).focus();
+  })
+});
 
 // new message posted to channel
 // - add to the chat log
@@ -24,7 +51,7 @@ $(channel).bind("nodechat-msg", function(event, message) {
 		.text(message.text)
 		.appendTo(row);
 	
-	row.appendTo("#chat-log");
+	row.appendTo(log);
 })
 // another user joined the channel
 // - add to the chat log
@@ -48,12 +75,14 @@ $(channel).bind("nodechat-msg", function(event, message) {
 		.text("joined the room")
 		.appendTo(row);
 	
-	row.appendTo("#chat-log");
+	row.appendTo(log);
 })
 // another user joined the channel
 // - add to the user list
 .bind("nodechat-join", function(event, message) {
-	var added = false;
+	var added = false,
+	    nick  = $("<li />", {'class':colors[0], text: message.nick });
+	colors.push(colors.shift());
 	$("#users > li").each(function() {
 		if (message.nick == this.innerHTML) {
 			added = true;
@@ -61,12 +90,12 @@ $(channel).bind("nodechat-msg", function(event, message) {
 		}
 		if (message.nick < this.innerHTML) {
 			added = true;
-			$("<li>" + message.nick + "</li>").insertBefore(this);
+			nick.insertBefore(this);
 			return false;
 		}
 	});
 	if (!added) {
-		$("#users").append("<li>" + message.nick + "</li>");
+		$("#users").append(nick);
 	}
 })
 // another user left the channel
@@ -90,6 +119,8 @@ $(channel).bind("nodechat-msg", function(event, message) {
 		.addClass("chat-text")
 		.text("left the room")
 		.appendTo(row);
+		
+	row.appendTo(log);
 })
 // another user left the channel
 // - remove from the user list
@@ -100,17 +131,35 @@ $(channel).bind("nodechat-msg", function(event, message) {
 			return false;
 		}
 	});
+})
+
+// Auto scroll list to bottom
+.bind("nodechat-join nodechat-part nodechat-msg", function(){
+  window.setTimeout(function(){
+    log.scrollTop(log[0].scrollHeight);
+  }, 10);
 });
 
 // handle login (choosing a nick)
 $(function() {
-	var login = $("#login").submit(function() {
+	var login = $("#login");
+	login.submit(function() {
+	  $(this).one('ajaxSuccess.login', function(){
+	    login.unbind('ajaxError.login');
+	    $("body").removeClass("login").addClass("channel");
+	    $("#message").focus();
+	  }).one('ajaxError.login', function(){
+	    login.unbind('ajaxSuccess.login')
+	      .find('label').text("Nickname in use. Please choose another:").end()
+	      .addClass("error")
+	      .find('input').focus();
+	  });
+
 		channel.join($("#nick").val());
-		
-		// TODO: handle unsuccessful login
-		$("body").removeClass("login").addClass("channel");
+
 		return false;
 	});
+	login.find('input').focus();
 });
 
 // handle sending a message
@@ -118,7 +167,7 @@ $(function() {
 	var message = $("#message");
 	$("#channel form").submit(function() {
 		channel.send(message.val());
-		message.val("");
+		message.val("").focus();
 		
 		return false;
 	});
