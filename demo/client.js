@@ -1,27 +1,27 @@
 (function($) {
 
 var colors  = ["green","orange","yellow","red","fuschia","blue"],
-    channel = nodeChat.connect("/chat"),
-    scroll  = true,
-    log,
-    message ;
-    
+	channel = nodeChat.connect("/chat"),
+	scroll  = true,
+	log,
+	message ;
+
 // TODO: Turn off auto scrolling if user has scrolled up from the bottom
 
 $(function(){
-  log = $("#chat-log");
-  message = $("#message");
-  
-  // Add a button that can be easily styled
-  $("<a />", {id:"submit", text: "Send", href: "#", click: function(e){
-    e.preventDefault();
-    $(this).closest('form').submit();
-  }}).appendTo("#entry fieldset");
-  
-  // Add a message indicator when a nickname is clicked
-  $("#users").delegate("li", "click", function(){
-    message.val( $(this).text() + ": " + message.val()).focus();
-  })
+	log = $("#chat-log");
+	message = $("#message");
+	
+	// Add a button that can be easily styled
+	$("<a />", {id:"submit", text: "Send", href: "#", click: function(e){
+		e.preventDefault();
+		$(this).closest('form').submit();
+	}}).appendTo("#entry fieldset");
+	
+	// Add a message indicator when a nickname is clicked
+	$("#users").delegate("li", "click", function(){
+		message.val( $(this).text() + ": " + message.val()).focus();
+	})
 });
 
 // new message posted to channel
@@ -76,7 +76,7 @@ $(channel).bind("nodechat-msg", function(event, message) {
 // - add to the user list
 .bind("nodechat-join", function(event, message) {
 	var added = false,
-	    nick  = $("<li />", {'class':colors[0], text: message.nick });
+		nick  = $("<li />", {'class':colors[0], text: message.nick });
 	colors.push(colors.shift());
 	$("#users > li").each(function() {
 		if (message.nick == this.innerHTML) {
@@ -130,28 +130,28 @@ $(channel).bind("nodechat-msg", function(event, message) {
 
 // Auto scroll list to bottom
 .bind("nodechat-join nodechat-part nodechat-msg", function(){
-  window.setTimeout(function(){
-    log.scrollTop(log[0].scrollHeight);
-  }, 10);
+	window.setTimeout(function(){
+		log.scrollTop(log[0].scrollHeight);
+	}, 10);
 });
 
 // handle login (choosing a nick)
 $(function() {
 	var login = $("#login");
 	login.submit(function() {
-	  $(this).one('ajaxSuccess.login', function(){
-	    login.unbind('ajaxError.login');
-	    $("body").removeClass("login").addClass("channel");
-	    $("#message").focus();
-	  }).one('ajaxError.login', function(){
-	    login.unbind('ajaxSuccess.login')
-	      .find('label').text("Nickname in use. Please choose another:").end()
-	      .addClass("error")
-	      .find('input').focus();
-	  });
-
+		$(this).one('ajaxSuccess.login', function(){
+			login.unbind('ajaxError.login');
+			$("body").removeClass("login").addClass("channel");
+			$("#message").focus();
+		}).one('ajaxError.login', function(){
+			login.unbind('ajaxSuccess.login')
+			.find('label').text("Nickname in use. Please choose another:").end()
+			.addClass("error")
+			.find('input').focus();
+		});
+		
 		channel.join($("#nick").val());
-
+		
 		return false;
 	});
 	login.find('input').focus();
