@@ -1,10 +1,20 @@
-var chat = require('../lib/server'),
+var sys = require("sys"),
+	chat = require('../lib/server'),
 	router = require("../lib/router");
 
 // create chat server and a single channel
 var chatServer = chat.createServer();
 chatServer.listen(8001);
-chatServer.addChannel({ basePath: "/chat" });
+
+chatServer.addChannel({
+	basePath: "/chat"
+}).addListener("msg", function(msg) {
+	sys.puts("<" + msg.nick + "> " + msg.text);
+}).addListener("join", function(msg) {
+	sys.puts(msg.nick + " join");
+}).addListener("part", function(msg) {
+	sys.puts(msg.nick + " part");
+});
 
 // chat app
 chatServer.passThru("/", router.staticHandler("web/index.html"));

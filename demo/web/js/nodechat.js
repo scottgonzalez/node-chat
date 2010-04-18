@@ -28,7 +28,7 @@ $.extend(Channel.prototype, {
 	poll: function() {
 		// TODO: get error handling to work
 		if (this.pollingErrors > 2) {
-			$(this).trigger("nodechat-connectionerror");
+			$(this).triggerHandler("connectionerror");
 			return;
 		}
 		var channel = this;
@@ -51,8 +51,7 @@ $.extend(Channel.prototype, {
 		if (data && data.messages) {
 			$.each(data.messages, function(i, message) {
 				channel.lastMessageTime = Math.max(channel.lastMessageTime, message.timestamp);
-				// TODO: don't prefix events if triggering on channel instance
-				$(channel).trigger("nodechat-" + message.type, message);
+				$(channel).triggerHandler(message.type, message);
 			});
 		}
 		this.poll();

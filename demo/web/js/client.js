@@ -34,7 +34,7 @@ $(function() {
 
 // new message posted to channel
 // - add to the chat log
-$(channel).bind("nodechat-msg", function(event, message) {
+$(channel).bind("msg", function(event, message) {
 	var time = formatTime(message.timestamp),
 		row = $("<div></div>")
 			.addClass("chat-msg");
@@ -58,7 +58,7 @@ $(channel).bind("nodechat-msg", function(event, message) {
 })
 // another user joined the channel
 // - add to the chat log
-.bind("nodechat-join", function(event, message) {
+.bind("join", function(event, message) {
 	var time = formatTime(message.timestamp),
 		row = $("<div></div>")
 			.addClass("chat-msg chat-system-msg");
@@ -82,7 +82,7 @@ $(channel).bind("nodechat-msg", function(event, message) {
 })
 // another user joined the channel
 // - add to the user list
-.bind("nodechat-join", function(event, message) {
+.bind("join", function(event, message) {
 	var added = false,
 		nick  = $("<li></li>", {
 			"class": colors[0],
@@ -106,7 +106,7 @@ $(channel).bind("nodechat-msg", function(event, message) {
 })
 // another user left the channel
 // - add to the chat log
-.bind("nodechat-part", function(event, message) {
+.bind("part", function(event, message) {
 	var time = formatTime(message.timestamp),
 		row = $("<div></div>")
 			.addClass("chat-msg chat-system-msg");
@@ -130,7 +130,7 @@ $(channel).bind("nodechat-msg", function(event, message) {
 })
 // another user left the channel
 // - remove from the user list
-.bind("nodechat-part", function(event, message) {
+.bind("part", function(event, message) {
 	$("#users > li").each(function() {
 		if (this.innerHTML == message.nick) {
 			$(this).remove();
@@ -140,7 +140,7 @@ $(channel).bind("nodechat-msg", function(event, message) {
 })
 
 // Auto scroll list to bottom
-.bind("nodechat-join nodechat-part nodechat-msg", function(){
+.bind("join part msg", function(){
 	window.setTimeout(function() {
 		log.scrollTop(log[0].scrollHeight);
 	}, 10);
@@ -209,7 +209,7 @@ $(function() {
 			document.title = "node chat";
 		});
 	
-	$(channel).bind("nodechat-msg", function(event, message) {
+	$(channel).bind("msg", function(event, message) {
 		if (!focused) {
 			unread++;
 			document.title = "(" + unread + ") node chat";
