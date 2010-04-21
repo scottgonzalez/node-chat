@@ -1,3 +1,4 @@
+#!/usr/bin/env node
 var sys = require("sys"),
 	fs = require("fs"),
 	chat = require('../lib/server'),
