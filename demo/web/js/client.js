@@ -1,6 +1,7 @@
 (function($) {
 
-var colors  = ["green", "orange", "yellow", "red", "fuschia", "blue"],
+var title = document.title,
+	colors  = ["green", "orange", "yellow", "red", "fuschia", "blue"],
 	channel = nodeChat.connect("/chat"),
 	scroll  = true,
 	log,
@@ -206,13 +207,13 @@ $(function() {
 		})
 		.focus(function() {
 			focused = true;
-			document.title = "node chat";
+			document.title = title;
 		});
 	
 	$(channel).bind("msg", function(event, message) {
 		if (!focused) {
 			unread++;
-			document.title = "(" + unread + ") node chat";
+			document.title = "(" + unread + ") " + title;
 		}
 	});
 });
