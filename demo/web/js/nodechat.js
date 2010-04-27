@@ -26,7 +26,6 @@ $.extend(Channel.prototype, {
 	},
 	
 	poll: function() {
-		// TODO: get error handling to work
 		if (this.pollingErrors > 2) {
 			$(this).triggerHandler("connectionerror");
 			return;
@@ -37,11 +36,14 @@ $.extend(Channel.prototype, {
 				since: this.lastMessageTime,
 				id: this.id
 			},
-			success: this.handlePoll,
-			error: function() {
-				channel.pollingErrors++;
-				setTimeout(channel.poll, 10*1000);
-			}
+			success: function(data) {
+				if (data) {
+					channel.handlePoll(data);
+				} else {
+					channel.handlePollError();
+				}
+			},
+			error: this.handlePollError
 		});
 	},
 	
@@ -55,6 +57,11 @@ $.extend(Channel.prototype, {
 			});
 		}
 		this.poll();
+	},
+	
+	handlePollError: function() {
+		this.pollingErrors++;
+		setTimeout(this.poll, 10*1000);
 	}
 });
 

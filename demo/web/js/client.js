@@ -8,6 +8,7 @@ var title = document.title,
 	message;
 
 // TODO: Turn off auto scrolling if user has scrolled up from the bottom
+// TODO: handle connectionerror
 
 $(function() {
 	log = $("#chat-log");
