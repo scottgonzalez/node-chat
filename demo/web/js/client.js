@@ -170,17 +170,17 @@ $(function() {
 			return false;
 		}
 		
-		$(this).one("ajaxSuccess.login", function() {
-			login.unbind("ajaxError.login");
-			$("body")
-				.removeClass("login")
-				.addClass("channel");
-			message.focus();
-		}).one("ajaxError.login", function() {
-			loginError("Nickname in use.");
+		channel.join(nick, {
+			success: function() {
+				$("body")
+					.removeClass("login")
+					.addClass("channel");
+				message.focus();
+			},
+			error: function() {
+				loginError("Nickname in use.");
+			}
 		});
-		
-		channel.join(nick);
 		
 		return false;
 	});

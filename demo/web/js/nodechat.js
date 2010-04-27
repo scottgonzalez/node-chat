@@ -66,17 +66,24 @@ $.extend(Channel.prototype, {
 });
 
 $.extend(Channel.prototype, {
-	join: function(nick) {
+	join: function(nick, options) {
 		var channel = this;
 		this.request("/join", {
 			data: {
 				nick: nick
 			},
 			success: function(data) {
-				// TODO: handle errors
+				if (!data) {
+					(options.error || $.noop)();
+					return;
+				}
+				
 				channel.id = data.id;
 				channel.poll();
-			}
+				
+				(options.success || $.noop)();
+			},
+			error: options.error || $.noop
 		});
 	},
 	
