@@ -208,6 +208,7 @@ $(function() {
 		})
 		.focus(function() {
 			focused = true;
+			unread = 0;
 			document.title = title;
 		});
 	
