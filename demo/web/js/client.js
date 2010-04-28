@@ -3,11 +3,9 @@
 var title = document.title,
 	colors  = ["green", "orange", "yellow", "red", "fuschia", "blue"],
 	channel = nodeChat.connect("/chat"),
-	scroll  = true,
 	log,
 	message;
 
-// TODO: Turn off auto scrolling if user has scrolled up from the bottom
 // TODO: handle connectionerror
 
 $(function() {
@@ -142,10 +140,13 @@ $(channel).bind("msg", function(event, message) {
 })
 
 // Auto scroll list to bottom
-.bind("join part msg", function(){
-	window.setTimeout(function() {
-		log.scrollTop(log[0].scrollHeight);
-	}, 10);
+.bind("join part msg", function() {
+	// auto scroll if we're within 50 pixels of the bottom
+	if (log.scrollTop() + 50 >= log[0].scrollHeight - log.height()) {
+		window.setTimeout(function() {
+			log.scrollTop(log[0].scrollHeight);
+		}, 10);
+	}
 });
 
 // handle login (choosing a nick)
