@@ -1,0 +1,23 @@
+2010.05.18, v0.2.1, 156141845042d0ac6d231823c311b2a1c7ffa86d
+- Added better error handling.
+- Added unique id to messages/events.
+- Changed since parameter for channel.query (/recv) to use the unique id instead of the timestamp.
+- Fixed demo so it doesn't auto-scroll if the user has scrolled up.
+- Fixed demo to reset unread count on focus.
+
+
+2010.04.27, v0.2.0, 0aeea97488bf599bca877b057ca1356ed4530be2
+- Moved stdout logging from the channel to the demo (no built-in logging).
+- Removed event prefixes in client, e.g., join instead of nodechat-join.
+- Added events to the channel instances on the server to match the events on the client.
+- Added error handling for invalid channels.
+- Moved callback flushing and session expiration to each channel to reduce blocking.
+- Updated to work with node 0.1.9x with no warnings.
+- Simplified demo by serving all files in /web as static files instead of explicitly handling each file.
+- Added error handling for dropped connections to the demo.
+- Added success and error callbacks for nodeChat.join (client).
+- Added a readme with documentation.
+
+
+2010.04.12, v0.1.0, 95467b513366ba71e220528262b376b21b16df98
+- Initial release.
