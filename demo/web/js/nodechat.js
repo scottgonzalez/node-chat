@@ -13,7 +13,7 @@ function Channel(basePath) {
 
 $.extend(Channel.prototype, {
 	pollingErrors: 0,
-	lastMessageTime: 1,
+	lastMessageId: 0,
 	id: null,
 	
 	request: function(url, options) {
@@ -33,7 +33,7 @@ $.extend(Channel.prototype, {
 		var channel = this;
 		this.request("/recv", {
 			data: {
-				since: this.lastMessageTime,
+				since: this.lastMessageId,
 				id: this.id
 			},
 			success: function(data) {
@@ -52,7 +52,7 @@ $.extend(Channel.prototype, {
 		var channel = this;
 		if (data && data.messages) {
 			$.each(data.messages, function(i, message) {
-				channel.lastMessageTime = Math.max(channel.lastMessageTime, message.timestamp);
+				channel.lastMessageId = Math.max(channel.lastMessageId, message.id);
 				$(channel).triggerHandler(message.type, message);
 			});
 		}

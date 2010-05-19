@@ -153,7 +153,6 @@ $(channel).bind("msg", function(event, message) {
 $(function() {
 	function loginError(error) {
 		login
-			.unbind("ajaxSuccess.login")
 			.addClass("error")
 			.find("label")
 				.text(error + " Please choose another:")
