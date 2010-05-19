@@ -55,6 +55,7 @@ The server and client both emit events on the channel objects.
 
 Each event receives an object with the following properties:
 
+* `id` - unique id for the event (unique per channel).
 * `nick` - the nick of the user who performed the action.
 * `type` - the type of action (will be same as the event type).
 * `text` - text associated with the action.
