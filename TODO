@@ -2,3 +2,4 @@
 -- update relevant requests to POSTs
 - style the scrollbar
 - handle long user lists in the UI
+- run a /who on login to find all users
