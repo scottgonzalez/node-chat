@@ -2,4 +2,6 @@
 -- update relevant requests to POSTs
 - style the scrollbar
 - handle long user lists in the UI
+- support for UTF-8 nicks
+- add current user's message before hitting the server
 - run a /who on login to find all users
