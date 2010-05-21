@@ -5,5 +5,3 @@
 - support for UTF-8 nicks
 - add current user's message before hitting the server
 - run a /who on login to find all users
-- return event id for /send requests
-
