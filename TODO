@@ -5,3 +5,4 @@
 - support for UTF-8 nicks
 - add current user's message before hitting the server
 - run a /who on login to find all users
+- indicate dropped connections and auto-reconnect in demo
