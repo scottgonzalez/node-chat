@@ -79,6 +79,7 @@ $.extend(Channel.prototype, {
 				}
 				
 				channel.id = data.id;
+				channel.since = data.since;
 				channel.poll();
 				
 				(options.success || $.noop)();
