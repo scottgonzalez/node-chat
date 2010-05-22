@@ -33,4 +33,5 @@ function serveFiles(localDir, webDir) {
 	});
 }
 serveFiles(__dirname + "/web", "");
+chatServer.passThru("/js/nodechat.js", router.staticHandler(__dirname + "/../web/nodechat.js"));
 chatServer.passThru("/", router.staticHandler(__dirname + "/web/index.html"));
