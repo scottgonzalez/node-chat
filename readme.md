@@ -69,7 +69,7 @@ Installation & Demo
 
 To install:
 
-	git clone http://github.com/scottgonzalez/node-chat
+	git clone http://github.com/scottgonzalez/node-chat.git
 
 To run the demo:
 
