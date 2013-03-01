@@ -1,0 +1,20 @@
+{
+  "name": "chat",
+  "version": "0.2.1",
+  "description": "A simple, scalable web-based chat server.",
+  "keywords": [
+    "chat"
+  ],
+  "homepage": "https://github.com/scottgonzalez/node-chat",
+  "bugs": "https://github.com/scottgonzalez/node-chat/issues",
+  "author": {
+    "name": "Scott González",
+    "email": "scott.gonzalez@gmail.com",
+    "url": "http://scottgonzalez.com"
+  },
+  "main": "lib/server.js",
+  "repository": {
+    "type": "git",
+    "url": "git://github.com/scottgonzalez/node-chat.git"
+  }
+}
