@@ -75,3 +75,9 @@ To run the demo:
 
 	./node-chat/demo/chat.js
 Then open `http://localhost:8001` in a browser.
+
+
+License
+-------
+
+Copyright 2013 Scott González. Released under the terms of the MIT license.
