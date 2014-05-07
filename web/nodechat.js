@@ -105,11 +105,23 @@ $.extend(Channel.prototype, {
 			}
 		});
 	},
+
+	cmd: function(cmd) {
+		if (!this.id) { return; }
+		// TODO: use POST
+		this.request("/cmd", {
+			data: {
+				id: this.id,
+				text: cmd
+			}
+		});
+	},
 	
 	who: function() {
 		if (!this.id) { return; }
 		this.request("/who", {
 			success: function(data) {
+				// TODO: Detach event from DOM
 				var users = $("#users");
 				$.each(data.nicks, function(i, nick) {
 					users.append("<li>" + nick + "</li>");
