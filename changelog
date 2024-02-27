@@ -1,3 +1,6 @@
+2024.02.26 v0.2.2a
+- corrected some compatability issues allowing the code to be ran even with newer node versions
+
 2010.05.18, v0.2.1, 156141845042d0ac6d231823c311b2a1c7ffa86d
 - Added better error handling.
 - Added unique id to messages/events.
